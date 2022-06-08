@@ -104,7 +104,7 @@ impl SourceId {
                 url.set_query(None);
                 Ok(Self::for_git(&url, reference)?.with_precise(precise))
             }
-            "registry" => {
+            "sparse" | "registry" => {
                 let url = url.into_url()?;
                 Ok(SourceId::new(SourceKind::Registry, url)?
                     .with_precise(Some("locked".to_string())))
